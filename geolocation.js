@@ -35,7 +35,7 @@ window.onload = function () {
 
     function loadLocation() {
         geoLocator = window.navigator.geolocation;
-        geoLocator.getCurrentPosition(successPosition);
+        geoLocator.getCurrentPosition(successPosition, errorPosition);
     }
 
     function successPosition(pos) {
