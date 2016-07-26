@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        #orange1 {
+            height: 150px;
+            width: 225px;
+        }
+        
+        .trans {
+            transform: scale(1);
+        }
+        .rote{
+            transform: rotate(90deg);
+        }
+
+        /*The translate method lets you move an HTML element 
+        by changing its relative X and Y position on the page*/
+        .translate{
+            transform: translate(50px,0px);
+        }
+
+        /*Inclina a imagem*/
+        .skew{
+            transform: skew(10deg, 10deg);
+        }
+
+        .combined{
+            transform: translate(50px,0px) scale(1.5) skew(10deg, 10deg);
+        }
+    </style>
+
+    
+</head>
+
+<body>
+    <img id="orange1" src="orange.jpg" style="position:relative" />
+</body>
+<script src="Applying_transform.js"></script>
+</html>

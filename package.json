@@ -1,0 +1,16 @@
+{
+  "name": "certification",
+  "description": "Estudos para certificação",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser":"*",
+    "consolidate": "*",
+    "handlebars": "*",
+    "static":"*"
+  }
+}
