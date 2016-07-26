@@ -31,7 +31,7 @@ function initMap() {
 
 window.onload = function () {
     localStorage.clear();
-    window.setInterval(loadLocation, 60000);
+    window.setInterval(loadLocation, 10000);
 
     function loadLocation() {
         geoLocator = window.navigator.geolocation;
