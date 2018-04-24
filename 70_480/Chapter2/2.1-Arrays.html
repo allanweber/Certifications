@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Arrays</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="onload();">
+
+    <article>
+        <h1>Array length</h1>
+        <p>Array length:
+            <span id="array-len"></span>
+        </p>
+        <button onclick="accessArray();">Acessar posição 10</button>
+    </article>
+
+    <article>
+        <h1>Array join</h1>
+        <p>Array:
+            <span>'soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby', 'tennis', 'badminton'</span>
+        </p>
+        <button onclick="arrayJoin();">Join Array</button>
+        <div>
+            <span id="joinedArray"></span>
+        </div>
+    </article>
+
+    <article>
+        <h1>Splice And Slice</h1>
+        <p>Array:
+            <span>'soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby', 'tennis', 'badminton'</span>
+        </p>
+        <button onclick="sliceArray();">Slice Array</button>
+        <div>
+            <p>
+                New Array:
+                <span id="sliceArray"></span>
+            </p>
+            <p>
+                Original Array:
+                <span id="slicedArray"></span>
+            </p>
+        </div>
+        <br/>
+        <button onclick="spliceArray();">Splice Array</button>
+        <div>
+            <p>
+                New Array:
+                <span id="spliceArray"></span>
+            </p>
+            <p>
+                Original Array:
+                <span id="splicedArray"></span>
+            </p>
+        </div>
+    </article>
+
+    <article>
+        <h1>Push/Pop - Shift/Unshift</h1>
+        <p>Array:
+            <span id="spanPushPop">'soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby', 'tennis', 'badminton'</span>
+        </p>
+        <input type="text" id="inputPush">
+        <button onclick="pushArray();">Push Array</button>
+        <button onclick="PopArray();">Pop Array</button>
+        <div>
+            <p>
+                Poped element:
+                <span id="popedArray"></span>
+            </p>
+        </div>
+        <br/>
+        <p>Array:
+            <span id="spanShiftUnshift">'soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby', 'tennis', 'badminton'</span>
+        </p>
+        <input type="text" id="inputShiftUnshift">
+        <button onclick="unshiftArray();">Unshift Array</button>
+        <button onclick="shiftArray();">Shift Array</button>
+        <div>
+            <p>
+                Shifted Array:
+                <span id="shiftedArray"></span>
+            </p>
+        </div>
+    </article>
+
+    <script>
+
+        var anArray = new Array(5);
+        function onload() {
+            writeArrayLen();
+        };
+
+        function writeArrayLen() {
+            var div = document.getElementById("array-len");
+            div.innerHTML = anArray.length;
+        }
+
+        function accessArray() {
+            anArray[9] = 'soccer'
+
+            writeArrayLen();
+        }
+
+        function arrayJoin() {
+            var sports = new Array('soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby',
+                'tennis', 'badminton');
+            var joined = sports.join(',');
+            var span = document.getElementById("joinedArray");
+            span.innerText = joined;
+        }
+
+        function sliceArray() {
+            var sports = new Array('soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby',
+                'tennis', 'badminton');
+            var someSports = sports.slice(1, 2);
+            document.getElementById("sliceArray").innerText = someSports.join(", ");
+            document.getElementById("slicedArray").innerText = sports.join(", ");
+        }
+
+        function spliceArray() {
+            var sports = new Array('soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby',
+                'tennis', 'badminton');
+            var someSports = sports.splice(1, 3, 'golf', 'curling', 'darts');
+            document.getElementById("spliceArray").innerText = someSports.join(", ");
+            document.getElementById("splicedArray").innerText = sports.join(", ");
+        }
+
+        var pushpoparray = new Array('soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby',
+            'tennis', 'badminton');
+        function pushArray() {
+            pushpoparray.push(document.getElementById("inputPush").value);
+
+            document.getElementById("spanPushPop").innerText = pushpoparray.join(", ");
+        }
+
+        function PopArray() {
+            var element = pushpoparray.pop();
+
+            document.getElementById("popedArray").innerText = element;
+            document.getElementById("spanPushPop").innerText = pushpoparray.join(", ");
+        }
+
+        var shiftUnshiftArray = new Array('soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby',
+            'tennis', 'badminton');
+        function unshiftArray() {
+            shiftUnshiftArray.unshift(document.getElementById("inputShiftUnshift").value);
+
+            document.getElementById("spanShiftUnshift").innerText = shiftUnshiftArray.join(", ");
+        }
+
+        function shiftArray() {
+            var element = shiftUnshiftArray.shift();
+
+            document.getElementById("shiftedArray").innerText = element;
+            document.getElementById("spanShiftUnshift").innerText = shiftUnshiftArray.join(", ");
+        }
+
+    </script>
+</body>
+
+</html>
