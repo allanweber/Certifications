@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Raise and handle an event</title>
+</head>
+
+<body>
+
+    <article>
+        <h2>Canceling an event</h2>
+        <div>
+            <a id="aLink" href="https://www.google.com.br/">Go to Google</a>
+        </div>
+    </article>
+
+    <script>
+        // window.addEventListener("load", onloadHandler, false);
+        // window.addEventListener("load", onloadHandler2, false);
+        // window.addEventListener("load", onloadHandler3, false);
+
+        // function onloadHandler() {
+        //     alert("hello event 1.");
+        // }
+        // function onloadHandler2() {
+        //     alert("hello event 2.");
+        // }
+        // function onloadHandler3() {
+        //     alert("hello event 3.");
+        // }
+        window.onload = function () {
+            var a = document.getElementById("aLink");
+            a.onclick = OverrideAnchorClick;
+        }
+        function OverrideAnchorClick() {
+            //do custom logic for the anchor
+            window.event.returnValue = false;
+            //or
+            //return false;
+        }
+    </script>
+</body>
+
+</html>

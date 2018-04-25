@@ -88,6 +88,41 @@
         </div>
     </article>
 
+    <article>
+        <h1>Array MAP</h1>
+        <p>Array:
+            <span>12.8, 15.9, 21.7, 35.2</span>
+        </p>
+        <button onclick="arrayMap();">Map Array</button>
+        <div>
+            <span id="mappedArray"></span>
+        </div>
+        <div>
+            <span>Original Array</span>
+            <span id="mappedOriginalArray"></span>
+        </div>
+    </article>
+
+    <article>
+        <h1>Array Reduce/Reduce Rigth</h1>
+        <p>Array:
+            <span>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span>
+        </p>
+        <button onclick="reduceArray();">Reduce/Reduce Rigth Array</button>
+        <div>
+            <span>Reduce Array (fatorial): </span>
+            <span id="reducedArray"></span>
+        </div>
+        <div>
+            <span>Reduce Rigth Array : </span>
+            <span id="reducedRightArray"></span>
+        </div>
+        <div>
+            <span>Original Array: </span>
+            <span id="reducedOriginalArray"></span>
+        </div>
+    </article>
+
     <script>
 
         var anArray = new Array(5);
@@ -158,6 +193,33 @@
 
             document.getElementById("shiftedArray").innerText = element;
             document.getElementById("spanShiftUnshift").innerText = shiftUnshiftArray.join(", ");
+        }
+
+        function arrayMap() {
+            var money = [12.8, 15.9, 21.7, 35.2];
+            var roundedMoney = money.map((value, position, array) => {
+                return Math.round(value);
+            }, money);
+
+            document.getElementById("mappedArray").innerText = roundedMoney.join(", ");
+            document.getElementById("mappedOriginalArray").innerText = money.join(", ");
+        }
+
+        function reduceArray() {
+            var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            var factorials = numbers.reduce((previous, current) => {
+                return previous * current;
+            });
+
+            var reduceRigth = numbers.reduceRight((previous, current) => {
+                return previous * current;
+            });
+
+            document.getElementById("reducedArray").innerText = factorials;
+
+            document.getElementById("reducedRightArray").innerText = reduceRigth;
+
+            document.getElementById("reducedOriginalArray").innerText = numbers.join(", ");
         }
 
     </script>
