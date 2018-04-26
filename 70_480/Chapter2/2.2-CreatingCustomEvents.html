@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Creating custom events</title>
+</head>
+
+<body>
+
+    <script>
+        window.onload = function () {
+            myEvent = new CustomEvent(
+                "anAction",
+                {
+                    detail: {
+                        description: "a description of the event",
+                        timeofevent: new Date(),
+                        eventcode: 2
+                    },
+                    bubbles: true,
+                    cancelable: true
+                }
+            );
+
+            document.addEventListener("anAction", customEventHandler);
+            document.dispatchEvent(myEvent);
+        }
+
+        function customEventHandler() {
+                 alert(window.event.detail.description);
+        }
+    </script>
+</body>
+
+</html>

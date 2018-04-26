@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Drag-and-drop</title>
+
+    <style>
+        .dropped {
+            width: 50%;
+            height: 50%;
+            position: relative;
+            top: 25%;
+            left: 25%;
+            background-color: black;
+        }
+
+        .over {
+            transform: scale(1.1);
+        }
+
+        .bucket {
+            width: 100px;
+            height: 100px;
+            margin: 10px 10px 10px 10px;
+            position: absolute;
+        }
+
+        .chip {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+        }
+
+        div:first-of-type {
+            background-color: red;
+        }
+
+        div:nth-of-type(2) {
+            background-color: green;
+            left: 25%;
+        }
+
+        div:nth-of-type(3) {
+            background-color: blue;
+            left: 50%;
+        }
+
+        #chip {
+            background-color: black;
+            width: 50px;
+            height: 50px;
+        }
+
+        .begin {
+            position: absolute;
+            left: 150px;
+            top: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bucket1" class="bucket"></div>
+
+    <div id="bucket2" class="bucket"></div>
+
+    <div id="bucket3" class="bucket"></div>
+
+    <div id="chip" draggable="true" class="chip"></div>
+
+    <script>
+        window.onload = function () {
+            var chip = document.getElementById("chip");
+            chip.addEventListener("dragstart", function () { window.event.dataTransfer.setData("Text", this.id); });
+
+            dragbucket1();
+            dragbucket2();
+            dragbucket3();
+        }
+
+        function dragbucket1() {
+            var bucket = document.getElementById("bucket1");
+            bucket.addEventListener("dragenter", function () {
+                bucket.classList.add("over");
+                window.event.returnValue = false;
+            });
+            bucket.addEventListener("dragleave", function () {
+                bucket.classList.remove("over");
+            });
+            bucket.addEventListener("dragover", function () {
+                window.event.returnValue = false;
+            });
+            bucket.addEventListener("drop", function () {
+                window.event.returnValue = false;
+                var data = event.dataTransfer.getData("Text");
+                var d = document.getElementById(data);
+                d.classList.remove("begin");
+                d.classList.add("dropped");
+                this.appendChild(d);
+            });
+        }
+
+        function dragbucket2() {
+            var bucket = document.getElementById("bucket2");
+            bucket.addEventListener("dragenter", function () {
+                bucket.classList.add("over");
+                window.event.returnValue = false;
+            });
+            bucket.addEventListener("dragleave", function () {
+                bucket.classList.remove("over");
+            });
+            bucket.addEventListener("dragover", function () {
+                window.event.returnValue = false;
+            });
+            bucket.addEventListener("drop", function () {
+                window.event.returnValue = false;
+                var data = event.dataTransfer.getData("Text");
+                var d = document.getElementById(data);
+                d.classList.remove("begin");
+                d.classList.add("dropped");
+                this.appendChild(d);
+            });
+        }
+
+        function dragbucket3() {
+            var bucket = document.getElementById("bucket3");
+            bucket.addEventListener("dragenter", function () {
+                bucket.classList.add("over");
+                window.event.returnValue = false;
+            });
+            bucket.addEventListener("dragleave", function () {
+                bucket.classList.remove("over");
+            });
+            bucket.addEventListener("dragover", function () {
+                window.event.returnValue = false;
+            });
+            bucket.addEventListener("drop", function () {
+                window.event.returnValue = false;
+                var data = event.dataTransfer.getData("Text");
+                var d = document.getElementById(data);
+                d.classList.remove("begin");
+                d.classList.add("dropped");
+                this.appendChild(d);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

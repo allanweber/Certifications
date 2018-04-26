@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Implement exception handling</title>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+        // window.onload = function () {
+        //     try {
+        //         window.dosomeunsupportedmethod();
+        //     } catch (e) {
+        //         alert(`Browser does not support the desired functionality. 
+        //         Message: ${e.message}, Number: ${e.number}, Name: ${e.name}
+        //         `);
+        //     }
+        // }
+
+        var ball = {
+            x: -1,
+            y: -1,
+            draw: function DrawBall(c) {
+                if (this.x < 0)
+                    throw new Error(25, "Invalid X coordinate");
+            }
+        }
+        window.onload = function () {
+            try {
+                var canvas = document.getElementById("myCanvas");
+                var context = canvas.getContext("2d");
+                ball.draw(context);
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

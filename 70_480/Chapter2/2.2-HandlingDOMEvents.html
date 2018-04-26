@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Handling DOM events</title>
+</head>
+
+<body>
+
+    <section>
+        <h2>
+            OnChange
+        </h2>
+        <div>
+            <input id="aRange" type="range" max="200" min="0" value="0" />
+            <input id="aText" type="text" />
+            <div id="rangeValue"></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>
+            Focus/Blur/Keys
+        </h2>
+        <div>
+            <label>First Name</label>
+            <input id="firstNameText" type="text" />
+            <label>Last Name</label>
+            <input id="lastNameText" type="text" />
+            <div id="ruleViolation"></div>
+            <div id="outputText"></div>
+        </div>
+    </section>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("aRange").addEventListener("change", rangeChangeEvent);
+            document.getElementById("aText").addEventListener("change", rangeChangeEvent);
+
+
+            //
+            //document.getElementById("firstNameText").focus();
+            // document.getElementById("firstNameText").addEventListener("blur", function () {
+            //     if (this.value.length < 5) {
+            //         document.getElementById("ruleViolation").innerText = 'First Name is required to be 5 letters.';
+            //         document.getElementById("ruleViolation").style.color = 'red';
+            //         this.focus();
+            //     }
+            // });
+
+            // document.getElementById("firstNameText").addEventListener("keydown", function () {
+            //     document.getElementById("outputText").innerText = window.event.keyCode;
+            // });
+        }
+
+        document.onkeydown = function () {
+            if (window.event.ctrlKey && String.fromCharCode(window.event.keyCode) == 'F')
+                document.getElementById("firstNameText").focus();
+            if (window.event.ctrlKey && String.fromCharCode(window.event.keyCode) == 'L')
+                document.getElementById("lastNameText").focus();
+            return false;
+        }
+
+        function rangeChangeEvent() {
+            //the this keyword provides a direct reference to the element that created the event
+            document.getElementById("rangeValue").innerText = this.value;
+        }
+
+    </script>
+</body>
+
+</html>

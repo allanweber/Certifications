@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mouse events</title>
+</head>
+<style>
+    .scale {
+        transform: scale(1.5);
+    }
+</style>
+
+<body>
+    <div id="yellowBox" style="width: 500px;height:500px;margin: 0 auto;background-color:yellow;"></div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("yellowBox").addEventListener("click", yellowBoxClick);
+            document.getElementById("yellowBox").addEventListener("mouseenter", yellowBoxEnter);
+            document.getElementById("yellowBox").addEventListener("mouseleave", yellowBoxLeave);
+        }
+
+        function yellowBoxEnter() {
+            this.classList.add("scale");
+        }
+
+        function yellowBoxLeave() {
+            this.classList.remove("scale");
+        }
+
+        function yellowBoxClick() {
+            document.write("Client X: " + window.event.clientX + " ClientY: "
+                + window.event.clientY);
+            document.write("<BR />");
+            document.write("offsetX: " + window.event.offsetX + " offsetY: "
+                + window.event.offsetY);
+            document.write("<BR />");
+            document.write("screen X: " + window.event.screenX + " screenY: "
+                + window.event.screenY);
+        }
+    </script>
+</body>
+
+</html>
